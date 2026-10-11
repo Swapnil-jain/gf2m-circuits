@@ -4,10 +4,10 @@ Model: AND + XOR fan-in 2, polynomial basis. Method: keep the FP19 product set, 
 
 | field | polynomial | record | ours (total = AND+XOR) | depth | sha256 (12) | file | status |
 |---|---|---|---|---|---|---|---|
-| GF(2^9) | x^9+x^4+1 (0x211) | none | 136 = 54+82 | 7 | 1dd6f01bc71a | f9_d7.slp | verified. first published (no record). below the M(9)+naive-reduction baseline by 6 |
-| GF(2^9) | x^9+x^4+1 (0x211) | none | 144 = 54+90 | 6 | 66a78d059c4a | f9_d6.slp | verified. first published (no record). depth-6 variant |
-| GF(2^10) | x^10+x^3+1 (0x409) | none | 172 = 52+120 | 8 | c09e79e866ad | f10_d8.slp | verified. first published (no record). equals the baseline. no gain claimed |
-| GF(2^11) | x^11+x^2+1 (0x805) | none | 199 = 78+121 | 8 | b78e46259382 | f11_d8.slp | verified. first published (no record). below the M(11)+naive-reduction baseline by 7 |
+| GF(2^9) | x^9+x^4+1 (0x211) | none | 136 = 54+82 | 7 | 1dd6f01bc71a | f9_d7.slp | verified. no dedicated published circuit found (Mastrovito formula count 2m²−1 is higher). below the M(9)+naive-reduction baseline by 6 |
+| GF(2^9) | x^9+x^4+1 (0x211) | none | 144 = 54+90 | 6 | 66a78d059c4a | f9_d6.slp | verified. no dedicated published circuit found (Mastrovito formula count 2m²−1 is higher). depth-6 variant |
+| GF(2^10) | x^10+x^3+1 (0x409) | none | 172 = 52+120 | 8 | c09e79e866ad | f10_d8.slp | verified. no dedicated published circuit found (Mastrovito formula count 2m²−1 is higher). equals the baseline. no gain claimed |
+| GF(2^11) | x^11+x^2+1 (0x805) | none | 199 = 78+121 | 8 | b78e46259382 | f11_d8.slp | verified. no dedicated published circuit found (Mastrovito formula count 2m²−1 is higher). below the M(11)+naive-reduction baseline by 7 |
 | GF(2^128) GHASH | x^128+x^7+x^2+x+1 | none found (author gives M(128) only) | 11972 = 3888+8084 | 20 | 74e3fe5bd998 | ghash_base.slp | verified symbolically. equals the baseline. no gain claimed |
 
 Verification commands, run from multipliers:
