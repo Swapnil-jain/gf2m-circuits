@@ -10,6 +10,10 @@ Circuits, Lean 4 proofs and verifiers for two preprints by Swapnil Jain (October
 
 Each paper's claims, including the exact comparisons with prior circuits and their depths, are in the paper. Please cite the papers rather than this README.
 
+## Contributions
+
+- [ahrazzle](https://github.com/ahrazzle) contributed verified multipliers for GF(2^9) (136 gates), GF(2^10), GF(2^11) (199 gates) and the GHASH field GF(2^128), built with the papers' method. They are in [`multipliers/contrib/`](multipliers/contrib/), outside the commitment.
+
 ## Checking the results
 
 Each folder has its own README with the exact commands. The verifiers need only Python 3 (standard library):
