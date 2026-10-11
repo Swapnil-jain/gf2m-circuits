@@ -1,0 +1,9 @@
+'Sbox116d17.circuit_ok' depends on axioms: [propext]
+'Sbox116d17.circuit_pointwise' depends on axioms: [propext, Quot.sound]
+'Sbox116d17.control_mutant' depends on axioms: [propext]
+'Sbox116d17.control_bad_table' depends on axioms: [propext]
+
+real	0m8.834s
+user	0m8.673s
+sys	0m0.162s
+exit=0

@@ -1,0 +1,57 @@
+41 gates
+10 inputs
+A0 A1 A2 A3 A4 B0 B1 B2 B3 B4 
+9 outputs
+C0 C1 C7 C8 C6 C5 C2 C3 C4 
+begin
+T1 = A0 x B0
+T2 = A0 x B1
+T3 = A0 x B2
+T4 = A0 x B3
+T5 = A0 x B4
+T6 = B0 x A1
+T7 = B0 x A2
+T8 = B0 x A3
+T9 = B0 x A4
+T10 = T2 + T6
+T11 = T3 + T7
+T12 = T4 + T8
+T13 = T5 + T9
+T14 = A1 x B1
+T15 = A1 x B2
+T16 = A1 x B3
+T17 = A1 x B4
+T18 = B1 x A2
+T19 = B1 x A3
+T20 = B1 x A4
+T21 = T15 + T18
+T22 = T16 + T19
+T23 = T17 + T20
+T24 = A2 x B2
+T25 = A2 x B3
+T26 = A2 x B4
+T27 = B2 x A3
+T28 = B2 x A4
+T29 = T25 + T27
+T30 = T26 + T28
+T31 = A3 x B3
+T32 = A3 x B4
+T33 = B3 x A4
+T34 = T32 + T33
+T35 = A4 x B4
+T36 = T30 + T31
+T37 = T22 + T24
+T38 = T23 + T29
+T39 = T11 + T14
+T40 = T12 + T21
+T41 = T13 + T37
+C0 = T1
+C1 = T10
+C7 = T34
+C8 = T35
+C6 = T36
+C5 = T38
+C2 = T39
+C3 = T40
+C4 = T41
+end

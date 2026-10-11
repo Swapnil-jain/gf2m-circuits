@@ -1,0 +1,10 @@
+gf2m-circuits
+Copyright 2026 Swapnil Jain
+
+This repository includes copies of third-party circuit files, used only for verification and comparison and kept unmodified apart from format conversion (the JSON files under sbox/prior/ are our conversions of prior/raw/):
+
+- The Circuit Minimization Team (J. Boyar, R. Peralta et al.), https://www.cs.yale.edu/homes/peralta/CircuitStuff/CMT.html: multipliers/sources/circuits/cmt/, multipliers/sources/circuits/peralta_cmt/, and sbox/prior/ (AESDEPTH16SIZE125, SLP_AES_113, Sinv).
+- NIST, usnistgov/Circuits, https://github.com/usnistgov/Circuits: sbox/prior/ (aes-sbox-*, aes-invsbox-*).
+- D. J. Bernstein, binary polynomial multiplication circuits, https://binary.cr.yp.to/m.html: multipliers/sources/circuits/bernstein_bbe251/.
+
+These files remain the work of their authors and keep their original terms. If any author prefers a link instead of a copy, it will be replaced.

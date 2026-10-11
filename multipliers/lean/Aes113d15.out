@@ -1,0 +1,8 @@
+'Aes113d15.circuit_ok' depends on axioms: [propext]
+'Aes113d15.control_mutant' depends on axioms: [propext]
+'Aes113d15.control_wrong_poly' depends on axioms: [propext]
+
+real	14m54.269s
+user	14m45.819s
+sys	0m9.436s
+exit=0

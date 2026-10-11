@@ -1,0 +1,103 @@
+slp_740.txt : Multiplication circuit for GF(128) with irreducible polynomial
+X^7 + X^4 + 1.
+
+Date: July 2010.
+
+input polynomials are A0 + A1*X + A2*X^2 + ... + A6*X^6 and B0 + B1*X + B2*X^2
++ ... + B6*X^6
+
+output polynomial is  C0 + C1*X + C2*X^2 + ... + C6*X^6.
+
+Size : 84
+Depth : 5
+T1 = A1 + A4
+T2 = A2 + A5
+T3 = A3 + A6
+T4 = B1 + B4
+T5 = B2 + B5
+T6 = B3 + B6
+T7 = T1 x T6
+T8 = T2 x T5
+T9 = T3 x T4
+T10 = T2 x T6
+T11 = T3 x T5
+T12 = T3 x T6
+T13 = T1 x T4
+T14 = T1 x T5
+T15 = T2 x T4
+T16 = A0 x B0
+T17 = A1 x B3
+T18 = A2 x B2
+T19 = A3 x B1
+T20 = A0 x B1
+T21 = A1 x B0
+T22 = A2 x B3
+T23 = A3 x B2
+T24 = A4 x B4
+T25 = A0 x B2
+T26 = A1 x B1
+T27 = A2 x B0
+T28 = A3 x B3
+T29 = A4 x B5
+T30 = A5 x B4
+T31 = A0 x B3
+T32 = A1 x B2
+T33 = A2 x B1
+T34 = A3 x B0
+T35 = A4 x B6
+T36 = A5 x B5
+T37 = A6 x B4
+T38 = A0 x B4
+T39 = A4 x B0
+T40 = A5 x B6
+T41 = A6 x B5
+T42 = A0 x B5
+T43 = A5 x B0
+T44 = A6 x B6
+T45 = A0 x B6
+T46 = A6 x B0
+T47 = T7 + T8
+T48 = T10 + T11
+T49 = T32 + T33
+T50 = T47 + T9
+T51 = T16 + T17
+T52 = T18 + T19
+T53 = T20 + T21
+T54 = T22 + T23
+T55 = T12 + T25
+T56 = T26 + T27
+T57 = T28 + T29
+T58 = T31 + T34
+T59 = T35 + T36
+T60 = T38 + T39
+T61 = T40 + T41
+T62 = T13 + T26
+T63 = T42 + T43
+T64 = T12 + T14
+T65 = T15 + T45
+T66 = T52 + T51
+T67 = T66 + T50
+C0 = T67
+T68 = T48 + T24
+T69 = T54 + T53
+T70 = T69 + T68
+C1 = T70
+T71 = T55 + T30
+T72 = T57 + T56
+T73 = T72 + T71
+C2 = T73
+T74 = T49 + T37
+T75 = T59 + T58
+T76 = T75 + T74
+C3 = T76
+T77 = T60 + T61
+T78 = T77 + T50
+C4 = T78
+T79 = T48 + T44
+T80 = T63 + T62
+T81 = T80 + T79
+C5 = T81
+T82 = T49 + T46
+T83 = T65 + T64
+T84 = T83 + T82
+C6 = T84

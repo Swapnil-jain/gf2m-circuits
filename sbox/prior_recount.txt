@@ -1,0 +1,8 @@
+raw file                                           gates AND XOR XNOR depth  computes  label
+aes-sbox-a34-ad4-g125-gd15-xx91-4.circ.txt           125  34  87    4    15  sbox      NIST 125 (file name says depth 15)
+AESDEPTH16SIZE125                                    125  34  87    4    16  sbox      CMT 125 (page says depth 16)
+aes-sbox-a32-ad5-g110-gd22-xx78-3.circ.txt           110  32  75    3    22  sbox      NIST 110/22, 32 AND (seed a32)
+aes-sbox-a34-ad4-g110-gd22-xx76-3.circ.txt           110  34  73    3    22  sbox      NIST 110/22, 34 AND (seed a34)
+SLP_AES_113.txt                                      113  32  77    4    27  sbox      CMT/Calik 113 (page says depth 27)
+aes-invsbox-a32-ad5-g112-gd26-xx80-9.circ.txt        112  32  71    9    26  invsbox   NIST inverse 112 (file name says depth 26)
+Sinv.txt                                             121  34  83    4    21  invsbox   CMT inverse 121 (page says depth 21)

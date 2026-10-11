@@ -1,0 +1,15 @@
+5 gates
+4 inputs
+A0 A1 B0 B1 
+3 outputs
+C0 C1 C2 
+begin
+T1 = A0 x B0
+T2 = A0 x B1
+T3 = B0 x A1
+T4 = T2 + T3
+T5 = A1 x B1
+C0 = T1
+C1 = T4
+C2 = T5
+end

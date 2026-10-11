@@ -1,0 +1,8 @@
+'Gf5Rec.circuit_ok' depends on axioms: [propext]
+'Gf5Rec.control_mutant' depends on axioms: [propext]
+'Gf5Rec.control_wrong_poly' depends on axioms: [propext]
+
+real	0m4.429s
+user	0m4.338s
+sys	0m0.291s
+exit=0

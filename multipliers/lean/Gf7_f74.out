@@ -1,0 +1,8 @@
+'Gf7_f74.circuit_ok' depends on axioms: [propext]
+'Gf7_f74.control_mutant' depends on axioms: [propext]
+'Gf7_f74.control_wrong_poly' depends on axioms: [propext]
+
+real	2m48.930s
+user	2m46.588s
+sys	0m3.490s
+exit=0

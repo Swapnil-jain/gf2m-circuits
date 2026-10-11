@@ -1,0 +1,2 @@
+Public timestamp: https://gist.github.com/Swapnil-jain/3b2c5d8c6b656e5a9cef2961d65434e0 (root f9cfddf4..., 2026-10-11)
+Public timestamp v2: https://gist.github.com/Swapnil-jain/6750e3f460658bc51c9a5f376c93af72 (root 7139c329..., adds the GF(2^8) multiplier circuits 107@13 and 108@12 of the companion multiplier paper (not S-box circuits); supersedes the 3b2c5d8c gist for root f9cfddf4...)

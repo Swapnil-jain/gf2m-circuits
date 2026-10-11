@@ -1,0 +1,75 @@
+slp_630.txt : Multiplication circuit for GF(64) with irreducible polynomial X^6 + X^3 + 1.
+
+Date: July 2010.
+
+input polynomials are A0 + A1*X + A2*X^2 + ... + A5*X^5 and B0 + B1*X + B2*X^2 + ... + B5*X^5
+
+output polynomial is  C0 + C1*X + C2*X^2 + ... + C5*X^5.
+
+Size : 57
+Depth : 5
+
+SLP:
+T1 = A0 + A3
+T2 = A1 + A4
+T3 = A2 + A5
+T4 = B0 + B3
+T5 = B1 + B4
+T6 = B2 + B5
+T7 = T2 x T6
+T8 = T3 x T5
+T9 = T3 x T6
+T10 = T1 x T4
+T11 = T1 x T5
+T12 = T2 x T4
+T13 = T1 x T6
+T14 = T2 x T5
+T15 = T3 x T4
+T16 = A0 x B0
+T17 = A1 x B2
+T18 = A2 x B1
+T19 = A3 x B3
+T20 = A0 x B1
+T21 = A1 x B0
+T22 = A2 x B2
+T23 = A3 x B4
+T24 = A4 x B3
+T25 = A0 x B2
+T26 = A1 x B1
+T27 = A2 x B0
+T28 = A3 x B5
+T29 = A4 x B4 
+T30 = A5 x B3
+T31 = A4 x B5
+T32 = A5 x B4
+T33 = A5 x B5
+T34 = T7 + T8
+T35 = T21 + T20
+T36 = T25 + T26
+T37 = T34 + T16
+T38 = T35 + T9
+T39 = T36 + T27
+T40 = T17 + T18
+T41 = T22 + T23
+T42 = T28 + T29
+T43 = T32 + T31
+T44 = T11 + T12
+T45 = T13 + T14
+T46 = T40 + T19
+T47 = T46 + T37
+C0 = T47
+T48 = T41 + T24
+T49 = T48 + T38
+C1 = T49
+T50 = T42 + T30
+T51 = T50 + T39
+C2 = T51
+T52 = T43 + T10
+T53 = T52 + T37
+C3 = T53
+T54 = T38 + T33
+T55 = T54 + T44
+C4 = T55
+T56 = T39 + T15
+T57 = T56 + T45
+C5 = T57

@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Circuit Minimization</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1038.35">
+  <style type="text/css">
+    p.p2 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times}
+    li.li2 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times}
+    li.li3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times}
+    span.s1 {font: 12.0px 'Lucida Grande'}
+    span.s2 {text-decoration: underline ; color: #0000ee}
+    span.s3 {font: 12.0px Times; text-decoration: underline ; color: #0000ee}
+    ol.ol1 {list-style-type: decimal}
+   body
+   { 
+     max-width:     700px;
+     width: 100% ;
+     margin: 0 auto;
+     padding: 20px;
+     font: 12.0px Times;
+   }
+   </style>
+</head>
+<body>
+
+<h1>
+Circuit Minimization Work
+</h1>
+
+<p> 
+We plan to post on this page results obtained by the "circuit minimization team" (CMT). 
+This is an informal group of friends and colleagues that are working on the problem of 
+finding "good" circuits over GF2 (alternatively, circuits using only AND, XOR,
+and XNOR gates). XNOR gates are represented by the operation t = a # b , meaning
+t = (a + b + 1) modulo 2.
+The definition of "good" varies: small, low-depth, few AND gates, and so on.
+</p>
+
+<ol class="ol1">
+  <li class="li3"><b>Multiplication in GF(2^6) using irreducible polynomial x^6 + x^3 + 1 .</b> <a href="slp_630.txt"><span class="s2">Here </span></a>is the straight-line program for a circuit with 57 gates and depth 5. <span class="s1"><br>
+<a href="slp_630.pdf"><span class="s3">Here </span></a></span>is a pdf rendering of the circuit. The red nodes are AND gates. The yellow nodes are XOR gates. <span class="s1"><br>
+</span>The Ai's and Bi's are the coefficients of polynomials A, B. The Ci's are the coefficients of C = A*B. <span class="s1"><br>
+</span> The best circuit we can find in the literature for this problem,
+<a href="http://dl.acm.org/citation.cfm?id=1393691"><span class="s3">here,</span></a></span>
+has depth 5, size 61.
+<span class="Apple-converted-space"> </span></li>
+<br><li class="li2"><b>Multiplication in GF(2^7).<span class="Apple-converted-space"> </span></b></li>
+  <ol class="ol1">
+    <li class="li3"><b>Using irreducible polynomial x^7 + x^4 + 1 . </b><span class="s1"><br>
+</span>The best published circuit we can find for this has depth 7 and 100 gates. <span class="s1"><br>
+<a href="slp_740.txt"><span class="s3">Here </span></a></span>is the straight-line program for a circuit with 84 gates and depth 5. <span class="s1"><br>
+<a href="slp_740.pdf"><span class="s3">Here </span></a></span>is a pdf rendering of the circuit. The red nodes are AND gates. The yellow nodes are XOR gates.<span class="Apple-converted-space"> </span></li>
+    <li class="li3"><b>Using irreducible polynomial x^7 + x^3 + 1 . </b><span class="s1"><br>
+</span>The best published circuit we can find for this has depth 7 and 100 gates. <span class="s1"><br>
+<a href="slp_730.txt"><span class="s3">Here </span></a></span>is the straight-line program for a circuit with 85 gates and depth 5. <span class="s1"><br>
+<a href="slp_730.pdf"><span class="s3">Here </span></a></span>is a pdf rendering of the circuit. The red nodes are AND gates. The yellow nodes are XOR gates.<span class="Apple-converted-space"> </span></li>
+  </ol>
+ <br>
+
+<li class="li3"><b>Multiplication in GF(2^8) using the AES polynomial x^8 + x^4 + x^3 + x + 1 . </b>The best 
+published circuit we can find for this has 135 gates and depth 7
+(<a href="http://portal.acm.org/citation.cfm?id=1553689"><span class="s2"> link </span></a>). <span class="s1"><br>
+<a href="slp_84310.txt"><span class="s3">Here </span></a></span>is the straight-line program for a circuit with 117 
+gates and depth 6. <span class="s1"><br>
+</span>The Ai's and Bi's are the coefficients of polynomials A, B. The 
+Ci's are the coefficients of C = A*B. <span class="s1"><br>
+</span></li>
+
+<li class="li3"><b>Multiplication in GF(2^8) : custom-built field representation. </b>The next circuit
+was built using a tower field representation. It has 106 gates and is of depth 6.
+It probably beats any previous (as of Sept. 20, 2017) result for GF(2^8) multiplication.
+<a href="GF256mult.s106.d6"><span class="s3">Here </span></a></span>is the straight-line program.
+<span class="s1"><br>
+</span> Send me email for details of the construction and
+representation. The inputs to the circuit are the Ai's and Bi's.
+The outputs are the Ci's.
+<span class="s1"><br>
+</span></li>
+
+<li class="li3"><b>A 16-bit Sbox. </b>
+The paper "Customizable Sponge-Based Authenticated Encryption Using 16-bit S-boxes"
+(K3LR)-(Kelly, Kaminsky, Kurdziel, Lukowiak, Radziszowski in 
+Military Communications Conference, MILCOM 2015 - 2015 IEEE) presents
+a 16-bit Sbox based on GF(2^16) inversion. It quotes a size of
+1382 gates (1238 XOR gates and 144 AND gates, no depth is given).  
+A previously posted circuit here was incorrect (thanks to an anonymous
+referee for pointing this out). So we want to post something that is
+not too hard to verify.
+
+The K3LR Sbox is inversion in GF(2^16) followed by a linear transform
+that appears in 
+<a href="http://scholarworks.rit.edu/theses/5527/"><span class="s3">
+Christopher Wood's thesis </span></a></span>. 
+I do not know if the particular representation
+of GF(2^16) is important for cryptographic purposes.
+
+The following
+<a href="GF65536inv387d31"><span class="s3">
+circuit for inversion in GF(2^16)
+</span></a></span> 
+uses a tower field representation 
+and has depth 31 and size 387.
+The 
+<a href="WoodTransform.slp"><span class="s3">
+circuit for the linear transform 
+</span></a></span> 
+has depth 4 and size 59. 
+Combining the two circuits yields 
+a circuit with depth 35 and size
+is 446 (113 ANDs, 324 XORs, 9 XNORs). 
+The Sbox circuit (using the tower field representation)
+is 
+<a href="16bitSbox"><span class="s3">
+here.
+</span></a></span> 
+A change of basis yields the 
+<a href="K3LRsbox.slp"><span class="s3">
+K3LR Sbox.
+</span></a></span> 
+It has 537 gates (we have not attempted to
+build it without going through the tower field
+representation).
+
+<span class="s1"><br>
+</span></li>
+Here is what we did to verify the inversion circuit:
+the algebra used to construct the various Galois fields is
+<a href="calc.pdf"><span class="s3">
+here.
+</span></a></span> 
+The following 
+<a href="GFengine.cc"><span class="s3">
+c++ program 
+</span></a></span> 
+generates a multiplication circuit for GF(2^16).
+One can verify the program by matching it against 
+the algebra. The multiplication circuit,
+<a href="multcircuit"><span class="s3">
+here 
+</span></a></span> 
+,is not
+very good, but it is correct provided you believe the
+algebra. 
+The 
+<a href="verificationCircuit"><span class="s3">
+following circuit 
+</span></a></span> 
+uses our inversion circuit to produce xinverse from x,
+then it uses the multiplication circuit to multiply
+x and xinverse. If you believe the multiplication
+circuit is correct, then correctness of the inversion
+circuit follows from the joint circuit calculating
+the function f(x) = GaloisFieldIdentity (x not 0).
+The Galois Field identity is the vector of all 1's.
+This has been verified.
+When x is 0 the xinverse circuit outputs 0 since
+it has no negations.
+
+<br><li class="li2"><b>Binary Multiplication. </b><span class="s1"><br>
+</span>This is an old and much-studied problem. It can also be viewed as that of multiplication of polynomials of degree n over GF(2). <span class="s1"><br>
+</span>Dan Bernstein's results at <a href="http://binary.cr.yp.to/m.html"><span class="s2">High-speed cryptography in characteristic 2 </span></a>
+have been recently improved by Murat Cenk and M. Anwar Hasan
+(see 
+<a href="https://eprint.iacr.org/2015/094"><span class="s2"> Some New Results on Binary Polynomial Multiplication.)</span></a>
+
+Further improvements in size, depth, or both are shown below. <br><br>
+<!-- <span class="s1"><br> </span>-->
+Here, M(n) is the minimum number of bit operations (ANDs and XORs) needed to multiply two polynomials <b>of degree n-1 </b>. <span class="s1"><br>
+</span>It is not hard to show that M(n) \leq M(n-1) + 4(n-1). <span class="s1"><br>
+</span>Below are a few circuits synthesized in the last few years. <span class="s1"><br>
+
+<ol class="ol1">
+
+<li class="li3"><b>M(10) \leq 154. </b><span class="s1"><br>
+<a href="binary_pol_mult/B10size154depth7">
+<span class="s3">Here </span></a></span>
+is the straight-line program for a circuit with 154 gates and 
+depth 7.<span class="Apple-converted-space"> </span><br>
+<a href="binary_pol_mult/B10size155depth6">
+<span class="s3">Here </span></a></span>
+is the straight-line program for a circuit with 155 gates and 
+depth 6.
+<span class="Apple-converted-space"> </span>
+</li>
+
+<li class="li3"><b>M(11) \leq 186. </b><span class="s1"><br>
+<a href="binary_pol_mult/CMT11.txt"><span class="s3">Here </span></a></span>
+is the straight-line program for a circuit with 186 gates and 
+depth 7.<span class="Apple-converted-space"> </span><br>
+<a href="binary_pol_mult/CMT11verbose.pdf">
+<span class="s3">Here </span></a></span>is the pdf rendering 
+of the circuit. The red nodes are AND gates. The yellow nodes are XOR gates.
+<span class="Apple-converted-space"> </span></li>
+
+<li class="li3"><b>M(12) \leq 207. </b>
+
+<span class="s1"><br>
+<a href="binary_pol_mult/CMT12.txt"><span class="s3">Here </span></a></span>is the straight-line 
+program for a circuit with 207 gates and depth 7.<span class="Apple-converted-space"> </span><br>
+
+<a href="binary_pol_mult/CMT12verbose.pdf"><span class="s3">Here </span></a></span>is the pdf rendering 
+of the circuit. The red nodes are AND gates. The yellow nodes are XOR gates.
+<span class="Apple-converted-space"> </span></li>
+
+<li class="li3"><b>M(15) \leq 312. </b> <br>
+
+This illustrates why I think we don't really know the values of M(n). <br>
+Bernstein's 2009 circuit has 329 gates.
+Cenk and Hasan improved this to 317 gates in 2015.
+<span class="s1"><br>
+<a href="binary_pol_mult/CMT15.txt"><span class="s3">Here </span></a></span>is an 
+optimization of the latter circuit with 312 gates and depth 9 (send me email for lower-depth circuits).
+<span class="Apple-converted-space"> </span><br>
+
+<li class="li3"><b>M(n) for n \leq 100. </b> <br>
+<span class="s1"><br>
+<a href="BinPolMult.tar.gz"><span class="s3">This </span></a></span> contains circuits
+for values of n up to 100. Most of these are the smallest circuits known.
+<span class="Apple-converted-space"> </span><br>
+
+</ol>
+  <br>
+<li class="li3"><b>The S-Box of AES. </b> <br>
+<a href="SLP_AES_113.txt"><span class="s2">Here </span></a>is a circuit for the S-Box of AES. The circuit is described as a straight-line program using ANDs, XORs, XNORs
+(denoted by #). It contains 113 gates
+(32 AND gates and 81 XOR/XNOR gates)
+and has depth 27. This is an improvement, by 
+Cagdas Calik, of a previous circuit in this page. 
+<span class="Apple-converted-space"></span> 
+
+
+<!--
+<a href="AESBoxVerbose.pdf"><span class="s3">Here </span></a></span>is the pdf rendering of the circuit. The red nodes are AND gates, the yellow nodes are XOR gates and the gray nodes are XNOR gates.<span class="Apple-converted-space"> </span><br>
+As far as we know, this circuit improves over all previously published constructions. <span class="s1"><br>
+</span>
+It uses 32 AND gates and 83 XOR/XNOR gates and has depth 28.<span class="Apple-converted-space"></span> <br><br>
+The above circuit contains three parts: a top linear part, a middle non-linear part, and a bottom linear
+part. For several years we believed the top and bottom linear parts could not be reduced in size.
+This was proved by the SAT-solver community for the top linear part (size 23), but they were unable
+to do the same for the bottom linear part. In 2013, Visconti and Schiavo showed that our circuit
+for the bottom linear part was sub-optimal by at least one gate. Cagdas Calik 
+then pointed out that the 
+<a href="https://eprint.iacr.org/2009/191"><span class="s2"> BP heuristic </span></a>
+when run exploring all ties, yields a circuit with 113 gates.
+Further processing yields a circuit with size 113 and depth 27.
+The circuit is 
+<a href="SLP_AES_113.txt"><span class="s2">Here </span></a>.
+<span class="s1"><br> </span>
+<br>
+-->
+
+<br>
+<a href="Sinv.txt"><span class="s2">Here </span></a>is a circuit for the 
+reverse direction of the S-Box. The circuit has size 121 and 
+depth 21. We haven't worked much on this. 
+
+<br>
+
+The S-Box can be reduced to depth 16 and size 125 in the forward direction and 127 in the reverse direction. <span class="s1"></span><br>
+<a href="AESDEPTH16SIZE125"><span class="s2">Here </span></a>is a circuit for the forward directions of the S-Box. 
+
+
+<!--
+<span class="s1"><br>
+<a href="AESForwardDepthVerbose.pdf"><span class="s3">Here </span></a></span>is the pdf rendering of the forward direction of the S-box. he red nodes are AND gates, the yellow nodes are XOR gates and the gray nodes are XNOR gates.<span class="Apple-converted-space"> </span><br> 
+-->
+
+<a href="AESReverseDepth.txt"><span class="s2">Here </span></a>is a circuit for the reverse direction of the S-Box. 
+
+
+<!--
+<span class="s1"><br>
+<a href="AESReverseDepthVerbose.pdf"><span class="s3">Here </span></a></span>is the pdf rendering of the reverse direction of the S-box. he red nodes are AND gates, the yellow nodes are XOR gates and the gray nodes are XNOR gates.<span class="Apple-converted-space"> </span>
+-->
+
+</li>
+<br>
+<li class="li3"><b>All predicates on 4 bits. </b>
+<br>
+The multiplicative complexity of a function is the number of AND gates needed
+to implement it over the basis AND,XOR,1 (the 1 is for negation). 
+<br>
+The algebraic normal form of a function does not say much about this metric. 
+<br>
+For
+example, it is not easy to build a circuit with minimum number of AND gates for a
+function such as 
+<br>
+<br>
+g(a,b,c,d) = abcd + abc + abd + acb + acd + ab + ac + ad + bc + bd + cd.
+<br>
+<br>
+The following facts have been verified:
+<br>
+1) Every predicate on four bits can be implemented with at most 3 AND gates
+and at most 7 XOR gates; 
+(for functions that have the constant 1 in their algebraic normal form,
+the last gate would have to be negated; there are only two functions -
+modulo permutation of inputs -
+which appear to require 7 XOR gates)
+<br>
+2) Every predicate on four bits, but of degree 3, can be implemented with 2 AND gates.
+<br>
+<br>
+<br>
+The following (large) file contains straight-line programs  (SLPs)
+for all predicates f(x1,x2,x3,x4)
+with f(0,0,0,0) = 0. The SLPs are indexed by fn, where n is the decimal
+number corresponding to the truth table of the function. For example
+the function x1*x2*x3*x4 has truth table 0000 0000 0000 0001 = 1. So you
+can find it under "f1". The circuits were independently verified by
+Chris Wood (many thanks!).
+<br>
+If you denote by C_n[A,X] the set of functions with multiplicative
+complexity A for which an AND-optimal circuit requires exactly
+X XOR gates, then C_n[A,X] is closed under permutation of inputs
+(but not under arbitrary affine transformations). This property
+allows for detection of sub-optimal circuits. I have not
+coded this yet, so many of the circuits below are likely to
+be suboptimal. 
+<br>
+There are the two functions (up to permutation of inputs)
+that use 7 XOR gates and 3 AND gates.
+These functions do not appear to be special in any way.
+Magnus Find used a SAT solver to look into this. 
+The SAT solver "proved" that neither function has a
+circuit with 6 XOR gates. Given other functions, the
+SAT does find circuits with 6 XOR gates. So it would
+appear that these two functions are special in some way.
+
+<br>
+<span class="s1"><br> </span>
+<a href="C4_all.txt"><span class="s3">Predicates on four bits.</span></a></span>
+<br>
+
+<!--
+<a href="circuits42.txt"><span class="s2">Functions with multiplicative complexity <= 2 </span></a> 
+<span class="s1"><br> </span>
+<a href="circuits43.txt"><span class="s3">Functions with multiplicative complexity <= 3 </span></a></span>
+-->
+
+<br>
+<br>
+<li class="li3"><b>All predicates on 5 bits. </b>
+Meltem Turan, Cagdas Calik, and I have shown that all predicates
+on 5 bits have multiplicative complexity at most 4.
+I lost a bet about this with Cagdas (I thought it would be 5 or more).
+Multiplicative complexity grows exponentially with the number
+of input bits, so one of these days I will win a bet.
+
+<span class="s1"><br> </span>
+</ol>
+<p class="p2">Currently, CMT is
+Joan Boyar, Morris Dworkin, 
+Rene Peralta, Meltem Turan, Cagdas Calik, Luis Brandao.
+ 
+Past collaborators include: Michael Bartock, Ramon Collazo, Magnus Find,
+Michael Fischer, 
+Murat Cenk, Christopher Wood,
+Andrea Visconti, Chiara Schiavo, 
+Holman Gao, Bruce Strackbein, Larry Bassham .</p>
+
+
+<p id="lmdate"></p>
+
+<script type="text/javascript">
+function lastModified() {
+    var lmdate = new Date(document.lastModified);
+    document.getElementById("lmdate").innerHTML = lmdate;
+}
+lastModified();
+</script>
+
+</body>
+</html>

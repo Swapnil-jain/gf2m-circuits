@@ -1,0 +1,14 @@
+
+
+This directory contains circuits for multiplying two polynomials
+over GF2. The circuit for multiplication of n-term polynomials
+(i.e. degree n-1) is in file s_n_...
+
+These circuits are at
+http://cs-www.cs.yale.edu/homes/peralta/CircuitStuff/CMT.html
+
+or at
+
+https://csrc.nist.gov/Projects/Circuit-Complexity/Circuit-Problems
+
+

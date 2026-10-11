@@ -1,0 +1,8 @@
+'Gf6.circuit_ok' depends on axioms: [propext]
+'Gf6.control_mutant' depends on axioms: [propext]
+'Gf6.control_wrong_poly' depends on axioms: [propext]
+
+real	0m25.496s
+user	0m25.307s
+sys	0m1.274s
+exit=0

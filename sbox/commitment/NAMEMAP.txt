@@ -1,0 +1,9 @@
+name in commitment/SHA256SUMS  ->  file in circuits/
+sbox_106.json         -> sbox106_d34.json
+sbox_106_d24.json     -> sbox106_d24.json
+sbox_110.json         -> sbox110_d38.json
+sbox_113_d18.json     -> sbox113_d18.json
+sbox_116_d17.json     -> sbox116_d17.json
+sbox_121_d16.json     -> sbox121_d16.json
+invsbox_109_d31.json  -> invsbox109_d31.json
+Not under any root: sbox111_d21, sbox112_d18, sbox112_d20, invsbox109_d30

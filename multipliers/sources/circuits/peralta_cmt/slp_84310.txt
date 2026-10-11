@@ -1,0 +1,138 @@
+slp_84310.txt : Multiplication circuit for GF(256) with irreducible polynomial X^8 + X^4 + X^3 + X + 1.
+
+Date: July 2010.
+
+input polynomials are A0 + A1*X + A2*X^2 + ... + A7*X^7 and B0 + B1*X + B2*X^2
++ ... + B7*X^7
+
+output polynomial is  C0 + C1*X + C2*X^2 + ... + C7*X^7.
+
+Size : 117
+Depth : 6
+
+T1 = A0 x B0
+T2 = A0 x B1
+T3 = A1 x B0
+T4 = A0 x B2
+T5 = A1 x B1
+T6 = A2 x B0
+T7 = A0 x B3
+T8 = A1 x B2
+T9 = A2 x B1
+T10 = A3 x B0
+T11 = A1 x B3
+T12 = A2 x B2
+T13 = A3 x B1
+T14 = A2 x B3
+T15 = A3 x B2
+T16 = A3 x B3
+T17 = A4 x B4
+T18 = A4 x B5
+T19 = A5 x B4
+T20 = A4 x B6
+T21 = A5 x B5
+T22 = A6 x B4
+T23 = A4 x B7
+T24 = A5 x B6
+T25 = A6 x B5
+T26 = A7 x B4
+T27 = A5 x B7
+T28 = A6 x B6
+T29 = A7 x B5
+T30 = A6 x B7
+T31 = A7 x B6
+T32 = A7 x B7
+T33 = A0 + A4
+T34 = A1 + A5
+T35 = A2 + A6
+T36 = A3 + A7
+T37 = B0 + B4
+T38 = B1 + B5
+T39 = B2 + B6
+T40 = B3 + B7
+T41 = T40 x T36
+T42 = T40 x T35
+T43 = T40 x T34
+T44 = T40 x T33
+T45 = T39 x T36
+T46 = T39 x T35
+T47 = T39 x T34
+T48 = T39 x T33
+T49 = T38 x T36
+T50 = T38 x T35
+T51 = T38 x T34
+T52 = T38 x T33
+T53 = T37 x T36
+T54 = T37 x T35
+T55 = T37 x T34
+T56 = T37 x T33
+T57 = T2 + T3
+T58 = T4 + T5
+T59 = T6 + T32
+T60 = T7 + T8
+T61 = T9 + T10
+T62 = T60 + T61
+T63 = T11 + T12
+T64 = T13 + T63
+T65 = T14 + T15
+T66 = T18 + T19
+T67 = T20 + T21
+T68 = T22 + T67
+T69 = T23 + T24
+T70 = T25 + T26
+T71 = T69 + T70
+T72 = T27 + T28
+T73 = T29 + T32
+T74 = T30 + T31
+T75 = T52 + T55
+T76 = T48 + T51
+T77 = T54 + T76
+T78 = T44 + T47
+T79 = T50 + T53
+T80 = T78 + T79
+T81 = T43 + T46
+T82 = T49 + T81
+T83 = T42 + T45
+T84 = T71 + T74
+T85 = T41 + T16
+T86 = T85 + T68
+T87 = T66 + T65
+T88 = T83 + T87
+T89 = T58 + T59
+T90 = T72 + T73
+T91 = T74 + T17
+T92 = T64 + T91
+T93 = T82 + T92
+T94 = T80 + T62
+T95 = T94 + T90
+C7 = T95
+T96 = T41 + T77
+T97 = T84 + T89
+T98 = T96 + T97
+C6 = T98
+T99 = T57 + T74
+T100 = T83 + T75
+T101 = T86 + T90
+T102 = T99 + T100
+T103 = T101 + T102
+C5 = T103
+T104 = T1 + T56
+T105 = T90 + T104
+T106 = T82 + T84
+T107 = T88 + T105
+T108 = T106 + T107
+C4 = T108
+T109 = T71 + T62
+T110 = T86 + T109
+T111 = T110 + T93
+C3 = T111
+T112 = T86 + T88
+T113 = T89 + T112
+C2 = T113
+T114 = T57 + T32
+T115 = T114 + T88
+T116 = T115 + T93
+C1 = T116
+T117 = T93 + T1
+C0 = T117
+

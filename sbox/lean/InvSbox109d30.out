@@ -1,0 +1,9 @@
+'InvSbox109d30.circuit_ok' depends on axioms: [propext]
+'InvSbox109d30.circuit_pointwise' depends on axioms: [propext, Quot.sound]
+'InvSbox109d30.control_mutant' depends on axioms: [propext]
+'InvSbox109d30.control_bad_table' depends on axioms: [propext]
+
+real	0m8.574s
+user	0m8.401s
+sys	0m0.179s
+exit=0

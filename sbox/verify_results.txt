@@ -1,0 +1,11 @@
+circuits/invsbox109_d30.json: matches=invsbox gates=109 AND=32 XOR=71 XNOR=6 depth=30 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/invsbox109_d31.json: matches=invsbox gates=109 AND=32 XOR=70 XNOR=7 depth=31 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/sbox106_d24.json: matches=sbox gates=106 AND=34 XOR=69 XNOR=3 depth=24 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/sbox106_d34.json: matches=sbox gates=106 AND=32 XOR=71 XNOR=3 depth=34 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/sbox110_d38.json: matches=sbox gates=110 AND=32 XOR=73 XNOR=5 depth=38 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/sbox111_d21.json: matches=sbox gates=111 AND=34 XOR=74 XNOR=3 depth=21 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/sbox112_d18.json: matches=sbox gates=112 AND=34 XOR=75 XNOR=3 depth=18 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/sbox112_d20.json: matches=sbox gates=112 AND=34 XOR=75 XNOR=3 depth=20 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/sbox113_d18.json: matches=sbox gates=113 AND=34 XOR=76 XNOR=3 depth=18 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/sbox116_d17.json: matches=sbox gates=116 AND=34 XOR=78 XNOR=4 depth=17 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
+circuits/sbox121_d16.json: matches=sbox gates=121 AND=34 XOR=83 XNOR=4 depth=16 exhaustive+symbolic=PASS controls_wrongly_accepted=[] OK
