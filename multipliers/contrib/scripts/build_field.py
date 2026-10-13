@@ -8,6 +8,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--m', type=int, required=True); ap.add_argument('--poly', required=True); ap.add_argument('--out', required=True)
 ap.add_argument('--src', default=None, help='M(m) circuit file (default: FP19 s_<m>* from the repo pack)')
 ap.add_argument('--restarts', type=int, default=300); ap.add_argument('--seeds', type=int, default=10)
+ap.add_argument('--seed0', type=int, default=0, help='first seed index, so seeds can be split across cores')
 ap.add_argument('--tools', default=os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'tools')))
 ap.add_argument('--no-exhaustive', action='store_true')
 a = ap.parse_args()
@@ -48,7 +49,7 @@ assert V.symbolic(naive, spec), 'merged naive circuit fails symbolic field check
 print('naive merged', naive.counts(), 'src', os.path.basename(src), f'{time.time()-t0:.1f}s', flush=True)
 # linear-layer re-synthesis: bottom and top, best over seeds x restarts
 best = naive; rep = {'src': src, 'poly': hex(P), 'naive': naive.counts(), 'seeds': {}}
-for seed in range(1, a.seeds + 1):   # --seeds 0 skips re-synthesis (naive merged circuit only)
+for seed in range(a.seed0 + 1, a.seed0 + a.seeds + 1):   # --seeds 0 skips re-synthesis (naive merged circuit only)
     t1 = time.time()
     cols, rows, cur = L.bottom_matrix(naive)
     rb = L.run_heuristics(len(cols), rows, a.restarts, seed)
