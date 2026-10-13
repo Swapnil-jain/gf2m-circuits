@@ -21,6 +21,12 @@ Verification commands, run from multipliers:
     python3 -I tools/verify.py contrib/circuits/f10_d8.slp --field 0x409 --controls 12
     python3 -I tools/verify.py contrib/circuits/f11_d8.slp --field 0x805 --controls 12
     python3 -I tools/verify.py contrib/circuits/ghash_base.slp --field 0x100000000000000000000000000000087 --controls 3
+    python3 -I tools/verify.py contrib/circuits/f128.slp --field 0x100000000000000000000000000000087 --controls 3
+    python3 -I tools/verify.py contrib/circuits/f131.slp --field 0x80000000000000000000000000000010d --controls 3
+    python3 -I tools/verify.py contrib/circuits/f163.slp --field 0x800000000000000000000000000000000000000c9 --controls 3
+    python3 -I tools/verify.py contrib/circuits/f233.slp --field 0x20000000000000000000000000000000000000004000000000000000001 --controls 3
+    python3 -I tools/verify.py contrib/circuits/f251.slp --field 0x800000000000000000000000000000000000000000000000000000000000095 --controls 3
+    python3 -I tools/verify.py contrib/circuits/f283.slp --field 0x800000000000000000000000000000000000000000000000000000000000000000010a1 --controls 3
     python3 -I tools/verify.py contrib/circuits/f14_d9.slp --field 0x4021 --controls 12
     python3 -I tools/verify.py contrib/circuits/f14_d8.slp --field 0x4021 --controls 12
     python3 -I tools/verify.py contrib/circuits/f15_d10.slp --field 0x8003 --controls 12
@@ -40,12 +46,28 @@ Timings (one core per job): build_field 507 s / 755 s / 1003 s for m=9/10/11. GH
 product coefficients, and running `tools/linear_opt.py` on it, leaves every trinomial cascade
 unchanged but shortens every pentanomial one.
 
-| field | polynomial | naive cascade | optimised | saved |
+| field | polynomial weight | naive cascade | optimised | saved |
 |---|---|---|---|---|
-| GF(2^8), AES | 0x11B | 28 | 21 | 7 |
-| GF(2^13) | 0x201b | 48 | 39 | 9 |
-| GF(2^16) | 0x1002b | 60 | 53 | 7 |
+| every trinomial here: GF(2^9), (2^10), (2^11), (2^12), (2^14), (2^15), (2^233) | 3 | 2(m-1) | the same | 0 |
+| GF(2^8), AES | 5 | 28 | 21 | 7 |
+| GF(2^13) | 5 | 48 | 39 | 9 |
+| GF(2^16) | 5 | 60 | 53 | 7 |
+| GF(2^128), GHASH | 5 | 508 | 448 | 60 |
+| GF(2^131) | 5 | 520 | 520 | 0 |
+| GF(2^163) | 5 | 648 | 576 | 72 |
+| GF(2^251) | 5 | 1000 | 886 | 114 |
+| GF(2^283) | 5 | 1128 | 912 | 216 |
+
+Every trinomial cascade checked is already optimal, which is what the sparsity predicts. Most of the
+pentanomials give something back, between 10 and 25 per cent of the layer, but GF(2^131) gives nothing, so
+the saving depends on the exponent pattern and not on the weight alone. The only way to know is to run it.
 | GF(2^16) | x^16+x^5+x^3+x+1 (0x1002b) | none | 404 = 144+260 | 9 | 479062dfd378 | f16_d9.slp | verified, symbolic only, 2^32 pairs is past the verifier limit. 5 below the M(16)+naive-reduction baseline of 409, and 3 shallower. Mastrovito formula count 2m^2-1 is 511 |
+| GF(2^128) | x^128+x^7+x^2+x+1 (0x10000000...) | none | 11912 = 3888+8024 | 20 | ad942df47bf2 | f128.slp | verified symbolically. reduction 448 against the naive 508. 60 below the baseline of 11972. the GHASH field of AES-GCM |
+| GF(2^131) | x^131+x^8+x^3+x^2+1 (0x80000000...) | none | 12481 = 3520+8961 | 145 | 6232fed87f08 | f131.slp | verified symbolically. reduction 520 against the naive 520. equal to the baseline of 12481. the sect131 curves |
+| GF(2^163) | x^163+x^7+x^6+x^3+1 (0x80000000...) | none | 17499 = 5292+12207 | 179 | 908a168f39f9 | f163.slp | verified symbolically. reduction 576 against the naive 648. 72 below the baseline of 17571. the sect163 curves |
+| GF(2^233) | x^233+x^74+1 (0x20000000...) | none | 29818 = 9610+20208 | 246 | 36cf8ffa5e43 | f233.slp | verified symbolically. reduction 464 against the naive 464. equal to the baseline of 29818. the sect233 curves |
+| GF(2^251) | x^251+x^7+x^4+x^2+1 (0x80000000...) | none | 33982 = 9455+24527 | 266 | 2ec135b61ace | f251.slp | verified symbolically. reduction 886 against the naive 1000. 114 below the baseline of 34096. the BBE251 binary Edwards curve |
+| GF(2^283) | x^283+x^12+x^7+x^5+1 (0x80000000...) | none | 39647 = 10897+28750 | 299 | da44d52ab3e9 | f283.slp | verified symbolically. reduction 912 against the naive 1128. 216 below the baseline of 39863. the sect283 curves |
 
 Both GF(2^16) circuits are built that way, by `scripts/opt_reduction.py`: the published M(16) circuit
 is kept whole and only its reduction layer is re-synthesised. Four independent 4,000-restart runs
