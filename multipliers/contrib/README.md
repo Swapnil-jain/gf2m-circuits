@@ -25,6 +25,7 @@ Verification commands, run from multipliers:
     python3 -I tools/verify.py contrib/circuits/f14_d8.slp --field 0x4021 --controls 12
     python3 -I tools/verify.py contrib/circuits/f15_d10.slp --field 0x8003 --controls 12
     python3 -I tools/verify.py contrib/circuits/f16_d10.slp --field 0x1002b --controls 12
+    python3 -I tools/verify.py contrib/circuits/f16_d9.slp --field 0x1002b --controls 12
 
 Baseline commands and results: `python3 -I tools/naive_reduction.py 0x211 126` gives 142. `python3 -I tools/naive_reduction.py 0x409 154` gives 172. `python3 -I tools/naive_reduction.py 0x805 186` gives 206. `python3 -I tools/naive_reduction.py 0x4021 289` gives 315, `0x8003 312` gives 340 and `0x1002b 349` gives 409.
 
@@ -44,8 +45,9 @@ unchanged but shortens every pentanomial one.
 | GF(2^8), AES | 0x11B | 28 | 21 | 7 |
 | GF(2^13) | 0x201b | 48 | 39 | 9 |
 | GF(2^16) | 0x1002b | 60 | 53 | 7 |
+| GF(2^16) | x^16+x^5+x^3+x+1 (0x1002b) | none | 404 = 144+260 | 9 | 479062dfd378 | f16_d9.slp | verified, symbolic only, 2^32 pairs is past the verifier limit. 5 below the M(16)+naive-reduction baseline of 409, and 3 shallower. Mastrovito formula count 2m^2-1 is 511 |
 
-GF(2^16)'s circuit is built that way, by `scripts/opt_reduction.py`: the published M(16) circuit
+Both GF(2^16) circuits are built that way, by `scripts/opt_reduction.py`: the published M(16) circuit
 is kept whole and only its reduction layer is re-synthesised. Four independent 4,000-restart runs
 all reach 53. The same construction run on the two trinomials reproduces their quoted baselines
 exactly, 315 for m=14 and 340 for m=15, both verified exhaustively.
@@ -58,3 +60,14 @@ reduction is 294, against 303 for the quoted baseline and 283 for `circuits/fina
 `scripts/iterate_depth.py` re-runs `tools/depth.py sweep` on its own output until a round stops
 improving, keeping the best circuit at each depth. The sweep drops gates as well as depth: the
 GF(2^14) circuit went from 308 gates at depth 14 to 308 at depth 8 and then 307 at depth 9.
+
+## Window SAT
+
+`tools/window_sat.py` was run on each shipped circuit with the ANF semantics, windows 4 to 10, several seeds. It found no local improvement anywhere, which is the same outcome as the first contribution.
+
+| circuit | seeds | windows | proved UNSAT at one gate fewer |
+|---|---|---|---|
+| f14_d8.slp, 308 gates | 2 | 1,193 and 1,188 | 1,095 and 1,068 |
+| f15_d10.slp, 340 gates | 3 | 1,272, 1,167 and 1,177 | 1,136, 1,028 and 1,033 |
+
+For reference, the same tool run for 40 minutes on `circuits/final_f7.slp` covered 895 windows with 794 proved UNSAT and did not move its 87 gates either.
