@@ -1,0 +1,2 @@
+{'AND': 120, 'XOR': 188, 'XNOR': 0, 'NOT': 0, 'total': 308, 'live': 308, 'depth': 8}
+{'reference_spot': True, 'symbolic': True, 'exhaustive': True, 'controls': (26, 26, []), 'ok': True, 'secs': 8.34}
